@@ -26,12 +26,10 @@ public class Game {
             System.out.println("Moves must be unique!");
         }
         else {
-            final int max = len - 1;
-            final int comp_move = rnd(max);
+            final int comp_move = rnd(len);
             int usr_move = -1;
             //System.out.println("Pseudo-random integer: " + comp_move);
             String key = key128();
-
 
             Mac sha256_Hmac = Mac.getInstance("HmacSHA256");
             sha256_Hmac.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
@@ -89,7 +87,7 @@ public class Game {
     }
 
     private static int rnd(int max) {
-        return (int) (Math.random() * ++max);
+        return (int) (Math.random() * max);
     }
 
     private static String key128() throws NoSuchAlgorithmException {
