@@ -8,6 +8,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Game {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException {
@@ -26,9 +27,10 @@ public class Game {
             System.out.println("Moves must be unique!");
         }
         else {
-            final int comp_move = rnd(len);
+            Random random = new Random();
+            int comp_move = random.nextInt(len);
             int usr_move = -1;
-            //System.out.println("Pseudo-random integer: " + comp_move);
+            System.out.println("Pseudo-random integer: " + comp_move);
             String key = key128();
 
             Mac sha256_Hmac = Mac.getInstance("HmacSHA256");
@@ -84,10 +86,6 @@ public class Game {
 
         }
 
-    }
-
-    private static int rnd(int max) {
-        return (int) (Math.random() * max);
     }
 
     private static String key128() throws NoSuchAlgorithmException {
