@@ -30,7 +30,7 @@ public class Game {
             Random random = new Random();
             int comp_move = random.nextInt(len);
             int usr_move = -1;
-            System.out.println("Pseudo-random integer: " + comp_move);
+            //System.out.println("Pseudo-random integer: " + comp_move);
             String key = key128();
 
             Mac sha256_Hmac = Mac.getInstance("HmacSHA256");
